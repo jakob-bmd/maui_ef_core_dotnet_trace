@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.Metrics;
 using TestMauiApp.Model;
 
 namespace TestMauiApp
@@ -33,32 +32,13 @@ namespace TestMauiApp
                 {
                     Console.WriteLine("Adding a new blog");
                     Blog blog = new Blog { Url = "http://blogs.msdn.com/adonet" };
+
+                    //outcomment the following two lines so dotnet-trace works
                     await db.Blogs.AddAsync(blog);
                     await db.SaveChangesAsync();
+                    //--------------------------------------------------------
                     counter++;
                     ResultText = $"Done {counter} time/s";
-
-                    // Create
-                    //db.Add(blog);
-                    //db.SaveChanges();
-
-                    // Read
-                    /*Console.WriteLine("Querying for a blog");
-                    var blog = db.Blogs
-                        .OrderBy(b => b.BlogId)
-                        .First();
-
-                    // Update
-                    Console.WriteLine("Updating the blog and adding a post");
-                    blog.Url = "https://devblogs.microsoft.com/dotnet";
-                    blog.Posts.Add(
-                        new Post { Title = "Hello World", Content = "I wrote an app using EF Core!" });
-                    db.SaveChanges();
-
-                    // Delete
-                    Console.WriteLine("Delete the blog");
-                    db.Remove(blog);
-                    db.SaveChanges();*/
                 }
             }
             catch (Exception ex)
@@ -72,11 +52,5 @@ namespace TestMauiApp
             }
 
         }
-
-        //[RelayCommand]
-        //public async Task ShowDialogPromp()
-        //{
-        //    await MainThread.InvokeOnMainThreadAsync(() => Application.Current.MainPage.DisplayAlert("This is a test", "to check dotnet-trace", "OK"));
-        //}
     }
 }

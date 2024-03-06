@@ -7,6 +7,7 @@ namespace TestMauiApp.Model;
 
 //from https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?source=recommendations&tabs=netcore-cli
 //and https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli
+//needing a project of its own for EF Core on .net MAUI: https://learn.microsoft.com/en-us/ef/core/cli/powershell#other-target-frameworks
 public class BloggingContext : DbContext
 {
     public DbSet<Blog> Blogs { get; set; }
