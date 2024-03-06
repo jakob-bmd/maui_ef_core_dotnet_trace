@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TestMauiApp.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:TestMauiApp"
+    x:DataType="viewmodel:MainViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Image
+                Aspect="AspectFit"
+                HeightRequest="185"
+                SemanticProperties.Description="dot net bot in a race car number eight"
+                Source="dotnet_bot.png" />
+
+            <Label
+                SemanticProperties.HeadingLevel="Level1"
+                Style="{StaticResource Headline}"
+                Text="EF Core SaveAsync Result:" />
+
+            <Label
+                SemanticProperties.HeadingLevel="Level2"
+                Style="{StaticResource SubHeadline}"
+                Text="{Binding ResultText}" />
+
+            <Button
+                x:Name="CounterBtn"
+                Command="{Binding SaveEfCoreDataCommand}"
+                HorizontalOptions="Fill"
+                SemanticProperties.Hint="Saves EF Core Data"
+                Text="Click me" />
+
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="True"
+                IsVisible="{Binding IsBusy}"
+                Color="{DynamicResource SecondaryColor}" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
